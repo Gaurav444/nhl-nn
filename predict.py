@@ -2,12 +2,10 @@ import scrape
 import process
 import database as db
 import pickle
-import pandas
 import trueskill
 from sklearn.preprocessing import StandardScaler
 from sklearn.neural_network import MLPClassifier
 
-CSV_NAMES = ['wins','elo','score','score_against','momentum','vs','ts','outcome']
 
 def main():
     scrape.find_new_games()
@@ -16,10 +14,7 @@ def main():
 
     matches = scrape.upcoming_matches()
     mlp = pickle.load(open('model/mlp_model.pkl', 'rb'))
-
-    df = pandas.read_csv('data/training.csv', names=CSV_NAMES)
-    array = df.values
-    X = array[:,0:-1]
+    X,y = db.get_training_csv()
 
     scaler = StandardScaler()
     X = scaler.fit_transform(X)

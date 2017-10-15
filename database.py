@@ -1,5 +1,6 @@
 import MySQLdb as sql
 import numpy as np
+import pandas as pd
 import datetime
 import time
 from warnings import filterwarnings
@@ -9,6 +10,15 @@ con = sql.connect (host = "127.0.0.1", user = "root", passwd = "root", db = "toy
 con.autocommit(True)
 c = con.cursor(sql.cursors.DictCursor)
 c_np = con.cursor()
+
+
+def get_training_csv():
+	csv_names = ['wins','elo','score','momentum','vs','rating','ts','outcome']
+	df = pd.read_csv('data/training.csv', names=csv_names)
+	array = df.values
+	X = array[:,0:-1]
+	y = array[:,-1]
+	return X,y
 
 
 def get_game_stats(table, game_id):

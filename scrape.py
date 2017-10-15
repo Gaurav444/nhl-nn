@@ -20,15 +20,7 @@ def load_page(page_url):
 
 
 def match_details():
-    games = db.get_missing_matches()
-    for g in games:
-        team = 'a'
-        players = {'stats':1}
-        try:
-            soup = load_page('https://www.hltv.org'+g['stats_url'])
-        except Exception as e:
-            print(e)
-            continue
+    return 0
 
 
 def scrape_matches():
@@ -68,19 +60,7 @@ def scrape_matches():
                 
 
 def upcoming_matches():
-    matches = []
-    soup = load_page('https://www.hltv.org/')
-    column = soup.find("div", { "class" : 'top-border-hide' })
-    upcoming = column.find_all("div", { "class" : 'teamrows' })
-    
-    print("\nScraping Upcoming Matches:")
-    for teams in upcoming:
-        t = teams.find_all("div",{'class':'teamrow'})
-        team_a = clean_name(t[0].text)
-        team_b = clean_name(t[1].text)
-        matches.append([team_a,team_b])
- 
-    return matches     
+    return 0  
 
 
 def new_team_check(team_name):
