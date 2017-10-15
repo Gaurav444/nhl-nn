@@ -25,7 +25,7 @@ The code for this is a compendium of other projects I've been tinkering with and
 ### Files & DB
 
 * train.py - has 2 functions train_mlp & search_mlp, train dumps out the optimized MLP model, and search does a gridsearch for optimum MLP parameters.
-* scrape.py - Scrapes HLTV for juicy data, and upcoming matches
+* scrape.py - Scrapes hockey-reference.com for juicy data, and upcoming matches
 * process.py - Chews through raw match data and computes all the useful stats to feed into the neural network. 
 * predict.py - Run this to get your predictions for upcoming matches
 * database.py - A simple database wrapper I wrote a while ago and need to clean up
